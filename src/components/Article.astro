@@ -7,7 +7,7 @@ const { url, title, description, pubDate } = Astro.props;
 
   <div class="article-info">
     <p>{description}</p>
-    <div>{pubDate}</div>
+    <div class="article-date">{pubDate}</div>
   </div>
 </a>
 
@@ -38,6 +38,11 @@ const { url, title, description, pubDate } = Astro.props;
   .article-info {
     display: flex;
     justify-content: space-between;
+    align-items: end;
     font-size: 0.875rem;
+  }
+
+  .article-date {
+    text-wrap: nowrap;
   }
 </style>
