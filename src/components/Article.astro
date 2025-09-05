@@ -15,20 +15,20 @@ const { url, title, description, pubDate } = Astro.props;
   .article-link {
     display: block;
     gap: 1.5rem;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    border: 2px solid var(--secondary);
 
     opacity: 0.6;
 
+    transition: all 0.2s ease-in-out;
+    border: 2px solid var(--secondary);
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+
     &:hover {
-      text-decoration: none;
+      opacity: 1;
 
       background-color: var(--secondary);
-      opacity: 1;
+      text-decoration: none;
     }
-
-    transition: all 0.2s ease-in-out;
   }
 
   .article-title {

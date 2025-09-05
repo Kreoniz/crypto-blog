@@ -64,10 +64,10 @@ const handleInput = (e) => {
 
 <style scoped>
 .playground {
-  border-radius: 0.5rem;
-  border: 3px solid var(--secondary);
-  padding: 0.5rem;
   margin: 0.5rem 0;
+  border: 3px solid var(--secondary);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
 }
 
 .fields {
@@ -81,14 +81,13 @@ const handleInput = (e) => {
 }
 
 .field {
-  font-family: "Courier New", Courier, monospace;
-
   width: 100%;
   min-height: 4lh;
+  font-family: "Courier New", Courier, monospace;
   word-break: break-all;
   field-sizing: content;
-  border-radius: 4px;
   border: 2px solid var(--secondary);
+  border-radius: 4px;
 }
 
 .textarea {
@@ -98,8 +97,8 @@ const handleInput = (e) => {
   resize: none;
 
   &:focus {
-    border: 2px solid var(--secondary);
     box-shadow: 0 0 0 2px var(--secondary);
+    border: 2px solid var(--secondary);
   }
 }
 
@@ -121,8 +120,8 @@ const handleInput = (e) => {
 }
 
 .info {
-  font-weight: bold;
   margin-bottom: 0.5rem;
+  font-weight: bold;
 }
 
 .mode {
