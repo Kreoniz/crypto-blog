@@ -4,4 +4,22 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 
 <BaseLayout>
   <h1>Главная</h1>
+
+  <div class="introduction">
+    <p>Добро пожаловать на сайт!</p>
+
+    <p>
+      Здесь находятся интерактивные решения заданий с курса <i
+        >"Математические основы защиты информации"</i
+      >
+    </p>
+  </div>
 </BaseLayout>
+
+<style>
+  .introduction {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+</style>
