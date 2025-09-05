@@ -1,0 +1,24 @@
+---
+const { url, title, description, pubDate } = Astro.props;
+---
+
+<a class="article-link" href={url}>
+  <div>{title}</div>
+
+  <div class="article-info">
+    <p>{description}</p>
+    <div>{pubDate}</div>
+  </div>
+</a>
+
+<style>
+  .article-link {
+    display: block;
+    gap: 0.5rem;
+  }
+
+  .article-info {
+    display: flex;
+    justify-content: space-between;
+  }
+</style>
