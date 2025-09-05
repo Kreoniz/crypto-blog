@@ -1,6 +1,6 @@
 ---
-title: "My First Blog Post"
-pubDate: 2022-07-01
+title: "My First Markdown Post"
+pubDate: 2021-09-24
 description: "This is the first post of my new Astro blog."
 ---
 

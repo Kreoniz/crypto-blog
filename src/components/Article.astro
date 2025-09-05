@@ -3,7 +3,7 @@ const { url, title, description, pubDate } = Astro.props;
 ---
 
 <a class="article-link" href={url}>
-  <div>{title}</div>
+  <div class="article-title">{title}</div>
 
   <div class="article-info">
     <p>{description}</p>
@@ -14,11 +14,30 @@ const { url, title, description, pubDate } = Astro.props;
 <style>
   .article-link {
     display: block;
-    gap: 0.5rem;
+    gap: 1.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    border: 2px solid var(--secondary);
+
+    opacity: 0.6;
+
+    &:hover {
+      text-decoration: none;
+
+      background-color: var(--secondary);
+      opacity: 1;
+    }
+
+    transition: all 0.2s ease-in-out;
+  }
+
+  .article-title {
+    font-weight: 600;
   }
 
   .article-info {
     display: flex;
     justify-content: space-between;
+    font-size: 0.875rem;
   }
 </style>
