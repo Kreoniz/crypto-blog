@@ -104,6 +104,8 @@ const handleInput = (e) => {
 
 .encrypted {
   color: var(--text-secondary);
+  white-space: pre-wrap;
+  word-break: break-all;
 }
 
 .controls {
