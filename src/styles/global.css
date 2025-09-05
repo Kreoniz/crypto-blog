@@ -1,0 +1,21 @@
+@import url("./reset.css");
+
+html {
+  font-family: system-ui, sans-serif;
+}
+
+body {
+  max-width: 80ch;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1rem;
+  line-height: 1.5;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  &:hover {
+    text-decoration: underline;
+  }
+}
