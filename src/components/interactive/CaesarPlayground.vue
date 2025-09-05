@@ -1,6 +1,6 @@
 <script setup>
 import { alphabet, rotN } from "@/algorithms/caesar-cipher";
-import { ref, computed } from "vue";
+import { computed, ref } from "vue";
 
 const text = ref("");
 const key = ref(0);
