@@ -53,7 +53,7 @@ const handleInput = (e) => {
       </div>
 
       <label class="mode" for="decipher-mode">
-        <input v-model="cipherMode" type="checkbox" />
+        <input v-model="cipherMode" id="decipher-mode" type="checkbox" />
         <span class="mode-name">{{
           cipherMode ? "Режим расшифровки" : "Режим зашифровки"
         }}</span>
