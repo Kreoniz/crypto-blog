@@ -1,11 +1,13 @@
 ---
-
+import KeyRound from "@lucide/astro/icons/key-round";
 ---
 
 <header>
   <nav class="nav">
     <div>
-      <a href="/">Crypto Blog</a>
+      <a class="logo-link" href="/">
+        <KeyRound class="logo" size="30" />
+      </a>
     </div>
 
     <ul class="link-list">
@@ -21,6 +23,29 @@
     justify-content: space-between;
     align-items: center;
     padding: 0.5rem 0;
+  }
+
+  .logo-link {
+  }
+
+  @keyframes shake {
+    0% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(20deg) scale(1.1);
+    }
+    100% {
+      transform: rotate(-20deg) scale(1.1);
+    }
+  }
+
+  .logo {
+    transform-origin: center;
+
+    &:hover {
+      animation: 0.5s ease-in-out infinite alternate shake;
+    }
   }
 
   .link-list {

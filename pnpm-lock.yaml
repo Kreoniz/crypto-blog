@@ -14,6 +14,9 @@ importers:
       '@astrojs/vue':
         specifier: ^5.1.0
         version: 5.1.0(@types/node@24.3.1)(astro@5.13.5(@types/node@24.3.1)(rollup@4.50.0)(typescript@5.9.2))(rollup@4.50.0)(vue@3.5.21(typescript@5.9.2))
+      '@lucide/astro':
+        specifier: ^0.542.0
+        version: 0.542.0(astro@5.13.5(@types/node@24.3.1)(rollup@4.50.0)(typescript@5.9.2))
       astro:
         specifier: ^5.13.5
         version: 5.13.5(@types/node@24.3.1)(rollup@4.50.0)(typescript@5.9.2)
@@ -486,6 +489,11 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.30':
     resolution: {integrity: sha512-GQ7Nw5G2lTu/BtHTKfXhKHok2WGetd4XYcVKGx00SjAk8GMwgJM3zr6zORiPGuOE+/vkc90KtTosSSvaCjKb2Q==}
+
+  '@lucide/astro@0.542.0':
+    resolution: {integrity: sha512-W1WcrLm4iZgjy40fhkAX8EW5LA4mGK23pewBixfRYhMj/J00Tba3GgHOEls5JqAsvlwQc6ClOLYSYA3Spzzb7w==}
+    peerDependencies:
+      astro: ^4 || ^5
 
   '@mdx-js/mdx@3.1.1':
     resolution: {integrity: sha512-f6ZO2ifpwAQIpzGWaBQT2TXxPv6z3RBzQKpVftEWN78Vl/YweF1uwussDx8ECAXVtr3Rs89fKyG9YlzUs9DyGQ==}
@@ -2610,6 +2618,10 @@ snapshots:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
+
+  '@lucide/astro@0.542.0(astro@5.13.5(@types/node@24.3.1)(rollup@4.50.0)(typescript@5.9.2))':
+    dependencies:
+      astro: 5.13.5(@types/node@24.3.1)(rollup@4.50.0)(typescript@5.9.2)
 
   '@mdx-js/mdx@3.1.1':
     dependencies:
