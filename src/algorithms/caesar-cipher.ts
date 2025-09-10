@@ -36,25 +36,39 @@ export const alphabet = [
   "я",
 ];
 
-export function rotN(text: string, shift: number, isCipher: boolean) {
-  if (isCipher) {
-    shift = alphabet.length - shift;
+/**
+ * Класс шифра Цезаря
+ * Принимает на вход алфавит, имеет методы encode и decode, которые принимают строку и сдвиг, а возвращают зашифрованную/расшифрованную строку.
+ */
+export class RotN {
+  alphabet: string[];
+
+  constructor(alphabet: string[]) {
+    this.alphabet = alphabet;
   }
 
-  const mod = (n: number, m: number) => ((n % m) + m) % m;
+  encode(text: string, shift: number) {
+    return this.#rotN(text, shift);
+  }
 
-  return text
-    .split("")
-    .map((char: string) => {
-      const lowerChar = char.toLowerCase();
-      const index = alphabet.indexOf(lowerChar);
+  decode(text: string, shift: number) {
+    return this.#rotN(text, this.alphabet.length - shift);
+  }
 
-      if (index === -1) return char;
+  #rotN(text: string, shift: number) {
+    return text
+      .split("")
+      .map((char: string) => {
+        const lowerChar = char.toLowerCase();
+        const index = alphabet.indexOf(lowerChar);
 
-      const newIndex = mod(index + shift, alphabet.length);
-      const newChar = alphabet[newIndex];
+        if (index === -1) return char;
 
-      return char === lowerChar ? newChar : newChar.toUpperCase();
-    })
-    .join("");
+        const newIndex = (index + shift) % this.alphabet.length;
+        const newChar = alphabet[newIndex];
+
+        return char === lowerChar ? newChar : newChar.toUpperCase();
+      })
+      .join("");
+  }
 }

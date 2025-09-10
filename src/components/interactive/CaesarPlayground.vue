@@ -1,13 +1,16 @@
 <script setup>
-import { alphabet, rotN } from "@/algorithms/caesar-cipher";
+import { alphabet, RotN } from "@/algorithms/caesar-cipher";
 import { computed, ref } from "vue";
 
 const text = ref("");
 const key = ref(0);
 const decipherMode = ref(true);
+const rotN = new RotN(alphabet);
 
 const encrypted = computed(() =>
-  rotN(text.value, Number(key.value), decipherMode.value),
+  decipherMode.value
+    ? rotN.decode(text.value, Number(key.value))
+    : rotN.encode(text.value, Number(key.value)),
 );
 
 const handleInput = (e) => {
