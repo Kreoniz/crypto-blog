@@ -1,5 +1,6 @@
 ---
 import KeyRound from "@lucide/astro/icons/key-round";
+import ThemeIcon from "./ThemeIcon.astro";
 ---
 
 <header>
@@ -11,8 +12,13 @@ import KeyRound from "@lucide/astro/icons/key-round";
     </div>
 
     <ul class="link-list">
-      <li><a href="/">Главная</a></li> |
+      <li><a href="/">Главная</a></li>
+      |
       <li><a href="/articles">Статьи</a></li>
+      |
+      <li>
+        <ThemeIcon />
+      </li>
     </ul>
   </nav>
 </header>

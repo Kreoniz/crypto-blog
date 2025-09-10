@@ -95,6 +95,7 @@ const handleInput = (e) => {
   background: none;
   field-sizing: content;
   resize: none;
+  color: inherit;
 
   &:focus {
     box-shadow: 0 0 0 2px var(--secondary);
