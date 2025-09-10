@@ -23,12 +23,17 @@ import ThemeIcon from "./ThemeIcon.astro";
   </nav>
 </header>
 
-<style>
+<style scoped>
   .nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0.5rem 0;
+  }
+
+  ol,
+  ul {
+    list-style: none;
   }
 
   @keyframes shake {

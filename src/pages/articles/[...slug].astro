@@ -17,3 +17,17 @@ const { Content } = await render(article);
 <ArticleLayout frontmatter={article.data}>
   <Content />
 </ArticleLayout>
+
+<style is:global>
+  p {
+    padding: 0.5rem 0;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    padding: 0.5rem 0;
+  }
+</style>

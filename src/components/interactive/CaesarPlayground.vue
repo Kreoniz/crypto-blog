@@ -70,7 +70,7 @@ async function openBruteDialog() {
     </dialog>
 
     <div class="fields">
-      <div class="info">Оригинальный:</div>
+      <div class="info">Оригинальный текст:</div>
 
       <textarea
         placeholder="Введите текст"
@@ -241,8 +241,6 @@ async function openBruteDialog() {
 }
 
 .dialog-heading {
-  position: absolute;
-  top: 0.75rem;
   margin-bottom: 0.5rem;
 }
 

@@ -49,6 +49,11 @@ button {
   color: inherit;
 }
 
+ol,
+ul {
+  padding-left: 1rem;
+}
+
 @view-transition {
   navigation: auto;
 }
