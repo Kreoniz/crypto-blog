@@ -1,6 +1,6 @@
 <script setup>
 import { alphabet, RotN } from "@/algorithms/caesar-cipher";
-import { computed, ref } from "vue";
+import { computed, nextTick, ref } from "vue";
 
 const text = ref("");
 const key = ref(0);
@@ -16,10 +16,59 @@ const encrypted = computed(() =>
 const handleInput = (e) => {
   text.value = e.target.value;
 };
+
+const bruteLines = ref([]);
+
+async function openBruteDialog() {
+  bruteLines.value = Array.from({ length: alphabet.length }, (_, k) => ({
+    key: k,
+    text: decipherMode.value
+      ? rotN.decode(text.value, k)
+      : rotN.encode(text.value, k),
+  }));
+
+  await nextTick();
+  window.bruteforceDialog.show();
+}
 </script>
 
 <template>
   <div class="playground">
+    <dialog class="bruteforce-dialog" id="bruteforceDialog">
+      <button
+        class="close-button"
+        type="button"
+        onclick="window.bruteforceDialog.close()"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-x-icon lucide-x"
+        >
+          <path d="M18 6 6 18" />
+          <path d="m6 6 12 12" />
+        </svg>
+      </button>
+
+      <h3 class="dialog-heading">
+        Перебор всего алфавита всего {{ alphabet.length }} ключей
+      </h3>
+
+      <div class="bruteforce-list">
+        <div v-for="{ key, text } in bruteLines">
+          <div class="key-info">Ключ: {{ key }}</div>
+          <div class="key-message">{{ text ? text : "-" }}</div>
+        </div>
+      </div>
+    </dialog>
+
     <div class="fields">
       <div class="info">Оригинальный:</div>
 
@@ -57,16 +106,32 @@ const handleInput = (e) => {
           decipherMode ? "Режим расшифровки" : "Режим зашифровки"
         }}</span>
       </label>
+
+      <button @click="openBruteDialog" class="bruteforce" type="button">
+        Перебор всего алфавита
+      </button>
     </div>
   </div>
 </template>
 
 <style scoped>
 .playground {
+  position: relative;
   margin: 0.5rem 0;
   border: 3px solid var(--secondary);
   border-radius: 0.5rem;
   padding: 0.5rem;
+}
+
+.bruteforce-dialog {
+  top: 0;
+  border-radius: inherit;
+  background-color: var(--background);
+  padding: inherit;
+  width: 100%;
+  max-height: 100%;
+  overflow-y: auto;
+  color: var(--text);
 }
 
 .fields {
@@ -75,6 +140,7 @@ const handleInput = (e) => {
   grid-template-columns: repeat(2, 1fr);
   grid-auto-flow: column;
   gap: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .range-input {
@@ -138,6 +204,60 @@ const handleInput = (e) => {
   text-wrap: nowrap;
 }
 
+.bruteforce {
+  margin-top: 0.5rem;
+  border: 2px solid var(--secondary);
+  border-radius: 4px;
+  padding: 0.25rem 0.5rem;
+
+  &:hover {
+    cursor: pointer;
+    background-color: var(--secondary);
+  }
+}
+
+.close-button {
+  position: sticky;
+  top: 0;
+  left: 100%;
+  opacity: 0.5;
+  z-index: 1;
+  margin-left: auto;
+  border: 2px solid var(--secondary);
+  border-radius: 5px;
+  padding: 0.25rem;
+
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+    background-color: var(--secondary);
+  }
+}
+
+.bruteforce-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.dialog-heading {
+  position: absolute;
+  top: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.key-info {
+  margin-bottom: 0.25rem;
+  font-size: 0.875rem;
+}
+
+.key-message {
+  border: 2px solid var(--secondary);
+  border-radius: 4px;
+  padding: 0.25rem 0.5rem;
+  word-break: break-all;
+}
+
 @media (max-width: 600px) {
   .playground {
     grid-template-columns: 1fr;
@@ -145,6 +265,7 @@ const handleInput = (e) => {
 
   .fields {
     grid-template-columns: 1fr;
+    grid-auto-flow: row;
   }
 }
 </style>

@@ -41,6 +41,14 @@ a {
   }
 }
 
+button {
+  appearance: none;
+  outline: none;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
 @view-transition {
   navigation: auto;
 }
