@@ -4,10 +4,10 @@ import { computed, ref } from "vue";
 
 const text = ref("");
 const key = ref(0);
-const cipherMode = ref(true);
+const decipherMode = ref(true);
 
 const encrypted = computed(() =>
-  rotN(text.value, Number(key.value), cipherMode.value),
+  rotN(text.value, Number(key.value), decipherMode.value),
 );
 
 const handleInput = (e) => {
@@ -18,24 +18,20 @@ const handleInput = (e) => {
 <template>
   <div class="playground">
     <div class="fields">
-      <div>
-        <div class="info">Оригинальный:</div>
+      <div class="info">Оригинальный:</div>
 
-        <textarea
-          placeholder="Введите текст"
-          class="textarea field"
-          :value="text"
-          @input="handleInput"
-          name="textarea"
-          id="textarea"
-        ></textarea>
-      </div>
+      <textarea
+        placeholder="Введите текст"
+        class="textarea field"
+        :value="text"
+        @input="handleInput"
+        name="textarea"
+        id="textarea"
+      ></textarea>
 
-      <div>
-        <div class="info">Зашифрованный текст:</div>
+      <div class="info">Зашифрованный текст:</div>
 
-        <pre class="encrypted field">{{ encrypted }}</pre>
-      </div>
+      <pre class="encrypted field">{{ encrypted }}</pre>
     </div>
 
     <div class="controls">
@@ -53,9 +49,9 @@ const handleInput = (e) => {
       </div>
 
       <label class="mode" for="decipher-mode">
-        <input v-model="cipherMode" id="decipher-mode" type="checkbox" />
+        <input v-model="decipherMode" id="decipher-mode" type="checkbox" />
         <span class="mode-name">{{
-          cipherMode ? "Режим расшифровки" : "Режим зашифровки"
+          decipherMode ? "Режим расшифровки" : "Режим зашифровки"
         }}</span>
       </label>
     </div>
@@ -72,7 +68,9 @@ const handleInput = (e) => {
 
 .fields {
   display: grid;
+  grid-template-rows: auto 1fr;
   grid-template-columns: repeat(2, 1fr);
+  grid-auto-flow: column;
   gap: 0.5rem;
 }
 
