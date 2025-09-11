@@ -30,32 +30,66 @@ async function openBruteDialog() {
   await nextTick();
   window.bruteforceDialog.show();
 }
+
+function saveResults() {
+  const lines = bruteLines.value
+    .map(({ key, text }) => `Ключ ${key}: ${text || "-"}`)
+    .join("\n");
+  const blob = new Blob([lines], { type: "text/plain" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "brute-force-results.txt";
+  a.click();
+  URL.revokeObjectURL(url);
+}
 </script>
 
 <template>
   <div class="playground">
     <dialog class="bruteforce-dialog" id="bruteforceDialog">
-      <button
-        class="close-button"
-        type="button"
-        onclick="window.bruteforceDialog.close()"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="lucide lucide-x-icon lucide-x"
+      <div class="dialog-sticky-bar">
+        <button class="save-button" type="button" @click="saveResults">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"
+            />
+            <polyline points="17 21 17 13 7 13 7 21" />
+            <polyline points="7 3 7 8 15 8" />
+          </svg>
+        </button>
+
+        <button
+          class="close-button"
+          type="button"
+          onclick="window.bruteforceDialog.close()"
         >
-          <path d="M18 6 6 18" />
-          <path d="m6 6 12 12" />
-        </svg>
-      </button>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M18 6 6 18" />
+            <path d="m6 6 12 12" />
+          </svg>
+        </button>
+      </div>
 
       <h3 class="dialog-heading">
         Перебор всего алфавита:
@@ -220,24 +254,35 @@ async function openBruteDialog() {
   }
 }
 
-.close-button {
+.dialog-sticky-bar {
+  display: inline-flex;
   position: sticky;
   top: 0;
   left: 100%;
-  opacity: 0.5;
+  gap: 0.25rem;
   z-index: 1;
-  margin-left: auto;
+  background: var(--background);
+}
+
+.save-button,
+.close-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.5;
+  transition: opacity 0.15s;
   border: 2px solid var(--secondary);
   border-radius: 5px;
   padding: 0.25rem;
-
-  &:hover {
-    opacity: 1;
-    cursor: pointer;
-    background-color: var(--secondary);
-  }
+  width: 2.5rem;
+  height: 2.5rem;
 }
-
+.save-button:hover,
+.close-button:hover {
+  opacity: 1;
+  cursor: pointer;
+  background-color: var(--secondary);
+}
 .bruteforce-list {
   display: flex;
   flex-direction: column;
