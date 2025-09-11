@@ -119,7 +119,9 @@ function saveResults() {
         id="textarea"
       ></textarea>
 
-      <div class="info">Зашифрованный текст:</div>
+      <div class="info">
+        {{ decipherMode ? "Расшифрованный" : "Зашифрованный" }} текст:
+      </div>
 
       <pre class="encrypted field">{{ encrypted }}</pre>
     </div>
