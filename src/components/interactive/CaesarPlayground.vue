@@ -58,7 +58,11 @@ async function openBruteDialog() {
       </button>
 
       <h3 class="dialog-heading">
-        Перебор всего алфавита всего {{ alphabet.length }} ключей
+        Перебор всего алфавита:
+        <span class="underline">{{ alphabet.length }} ключа</span> с режимом
+        <span class="underline">{{
+          decipherMode ? "расшифровки" : "зашифровки"
+        }}</span>
       </h3>
 
       <div class="bruteforce-list">
@@ -254,6 +258,10 @@ async function openBruteDialog() {
   border-radius: 4px;
   padding: 0.25rem 0.5rem;
   word-break: break-all;
+}
+
+.underline {
+  text-decoration: underline;
 }
 
 @media (max-width: 600px) {

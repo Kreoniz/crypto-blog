@@ -52,7 +52,11 @@ export class RotN {
   }
 
   decode(text: string, shift: number) {
-    return this.#rotN(text, this.alphabet.length - shift);
+    return this.#rotN(text, -shift);
+  }
+
+  #mod(n: number, m: number) {
+    return ((n % m) + m) % m;
   }
 
   #rotN(text: string, shift: number) {
@@ -64,7 +68,7 @@ export class RotN {
 
         if (index === -1) return char;
 
-        const newIndex = (index + shift) % this.alphabet.length;
+        const newIndex = this.#mod(index + shift, alphabet.length);
         const newChar = alphabet[newIndex];
 
         return char === lowerChar ? newChar : newChar.toUpperCase();
