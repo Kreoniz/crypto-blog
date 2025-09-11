@@ -61,6 +61,7 @@ export class RotN {
 
   #rotN(text: string, shift: number) {
     return text
+      .replaceAll("ё", "е")
       .split("")
       .map((char: string) => {
         const lowerChar = char.toLowerCase();
