@@ -14,6 +14,9 @@
     "@astrojs/vue": "^5.1.0",
     "@lucide/astro": "^0.542.0",
     "astro": "^5.13.5",
+    "rehype-katex": "^7.0.1",
+    "rehype-mathjax": "^7.1.0",
+    "remark-math": "^6.0.0",
     "vue": "^3.5.21"
   },
   "devDependencies": {

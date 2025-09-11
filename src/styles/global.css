@@ -57,3 +57,7 @@ ul {
 @view-transition {
   navigation: auto;
 }
+
+.math-inline svg {
+  display: inline !important;
+}
